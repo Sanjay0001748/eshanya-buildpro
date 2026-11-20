@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eshanya BuildPro</title>
+<meta name="description" content="Eshanya BuildPro, Mysuru. Architects, civil and structural engineering consultants: building planning, 3D elevation, interiors, structural design, estimation and site supervision.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Sofia+Sans+Semi+Condensed:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Eshanya BuildPro","description":"Architects, Civil & Structural Engineering Consultants","telephone":"+91 9742481544","email":"punithcr27@gmail.com","address":{"@type":"PostalAddress","streetAddress":"#5015, 1st Floor, Raju Corner, Vijayanagar 4th Stage","addressLocality":"Mysuru","postalCode":"570017","addressRegion":"Karnataka","addressCountry":"IN"},"employee":{"@type":"Person","name":"Punith C.R","jobTitle":"Structural Engineer"}}
+</script>
+<style>
+:root{
+  /* Layout idea: the business card unfolded. Charcoal hex ground, steel-blue skyline, wide serif capitals; one 3D building carries the story. */
+  --ink:#141518; --panel:#1c1e23; --panel-2:#252830;
+  --steel:#7f9cc4; --blue:#3f6fb5; --mist:#c9d3e0; --paper:#f3f5f8;
+  --text:#e9edf3; --muted:#9da9ba; --line:rgba(159,180,210,.2);
+  --display:'Cinzel','Trajan Pro',Georgia,serif;
+  --body:'Sofia Sans Semi Condensed','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  --hex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='52'%3E%3Cpath d='M15 0L30 8.66V25.98L15 34.64L0 25.98V8.66Z M15 34.64V52' fill='none' stroke='%237f9cc4' stroke-opacity='.13'/%3E%3C/svg%3E");
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink) var(--hex);color:var(--text);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg,canvas{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--steel);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.35rem,3.2vw,2.1rem);letter-spacing:.14em;text-transform:uppercase}
+h3{font-size:1.02rem;letter-spacing:.08em;text-transform:uppercase;line-height:1.35}
+p{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+section{padding-block:clamp(56px,9vw,104px);scroll-margin-top:60px}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:clamp(28px,5vw,48px);max-width:62ch}
+.head p{color:var(--muted)}
+.rule{width:64px;height:2px;background:var(--blue)}
+
+/* loader */
+.loader{position:fixed;inset:0;z-index:100;background:var(--ink) var(--hex);display:grid;place-items:center;pointer-events:none;animation:loaderOut .45s 1s forwards}
+.loader svg{width:96px;color:var(--mist)}
+.loader .d{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw .85s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(20,21,24,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:58px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);letter-spacing:.24em;font-size:.86rem}
+.brand svg{width:34px;height:32px;color:var(--steel)}
+.links{display:flex;gap:clamp(14px,2.4vw,30px);list-style:none;margin:0;padding:0}
+.links a{text-decoration:none;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.84rem;color:var(--mist);padding:12px 2px;display:block}
+.links a:hover{color:#fff}
+#menuBtn{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:44px;height:44px;color:var(--text);cursor:pointer;padding:0;place-items:center}
+#menuBtn span,#menuBtn span::before,#menuBtn span::after{display:block;width:20px;height:2px;background:currentColor;position:relative;content:""}
+#menuBtn span::before{position:absolute;top:-6px}#menuBtn span::after{position:absolute;top:6px}
+@media (max-width:800px){
+  #menuBtn{display:grid}
+  .links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--panel);border-bottom:1px solid var(--line);padding:6px clamp(16px,4vw,40px) 12px}
+  .nav.open .links{display:flex}
+  .links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .links li:last-child a{border-bottom:0}
+}
+
+/* hero */
+.hero{position:relative;padding:0;min-height:clamp(500px,74vh,700px);display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
+#skyline{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(20,21,24,.9) 0%,rgba(20,21,24,.55) 36%,rgba(20,21,24,0) 62%),linear-gradient(180deg,rgba(20,21,24,0) 62%,var(--ink) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-block:clamp(36px,7vw,72px)}
+.hero-copy{display:flex;flex-direction:column;gap:18px;max-width:560px}
+.hero-copy svg{width:76px;height:70px;color:var(--mist)}
+.hero h1{font-size:clamp(2rem,6.4vw,4rem);letter-spacing:.26em;line-height:1.12;font-weight:500}
+.hero h1 span{display:block}
+.tag{font-weight:600;font-size:clamp(1rem,2.1vw,1.25rem);letter-spacing:.03em;color:var(--mist)}
+.lede{color:var(--muted);max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:6px;border:1px solid var(--blue);background:var(--blue);color:#fff;font:600 .95rem var(--body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.btn:hover{background:#4c7dc4}
+.btn.ghost{background:rgba(20,21,24,.5);border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--steel)}
+@media (max-width:760px){
+  .hero::after{background:linear-gradient(180deg,rgba(20,21,24,0) 30%,rgba(20,21,24,.9) 62%,var(--ink) 100%)}
+  .hero{min-height:560px}
+}
+
+/* story */
+.story-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,5vw,64px);align-items:start}
+.stage{position:sticky;top:78px;order:2;height:min(68vh,540px);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--ink)}
+.stage canvas{width:100%;height:100%}
+.stage-label{position:absolute;left:14px;bottom:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;color:var(--mist);background:rgba(20,21,24,.7);padding:6px 10px;border-radius:4px;font-variant-numeric:tabular-nums}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.steps li{min-height:44vh;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:18px 0 18px 22px;border-left:2px solid var(--line);color:var(--muted);transition:color .3s,border-color .3s}
+.steps li.on{border-left-color:var(--blue);color:var(--text)}
+.steps .n{font-family:var(--display);font-size:.85rem;letter-spacing:.2em;color:var(--steel)}
+.steps p{max-width:42ch}
+@media (max-width:860px){
+  .story-grid{grid-template-columns:1fr;gap:18px}
+  .stage{order:0;top:58px;height:40vh;min-height:230px;z-index:3;border-radius:0 0 10px 10px;margin-inline:calc(-1 * clamp(16px,4vw,40px));border-inline:0}
+  .steps li{min-height:38vh}
+}
+.no3d .stage{display:none}.no3d .story-grid{grid-template-columns:1fr}.no3d .steps li{min-height:0}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:1020px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.svc-grid{grid-template-columns:1fr}}
+.svc{perspective:900px;--rx:0deg;--ry:0deg}
+.svc-inner{position:relative;height:330px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1);transform:rotateX(var(--rx)) rotateY(calc(var(--ry) + var(--flip,0deg)));cursor:pointer;border-radius:10px}
+.svc-inner.flipped{--flip:180deg}
+.face{position:absolute;inset:0;border-radius:10px;border:1px solid var(--line);background:var(--panel) var(--hex);padding:20px;display:flex;flex-direction:column;gap:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.back{transform:rotateY(180deg);background:var(--panel-2);justify-content:center}
+.face svg{width:100%;height:150px;color:var(--steel);flex:none}
+.face .more{margin-top:auto;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+.face ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;color:var(--mist)}
+.face li{padding-left:16px;position:relative}
+.face li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--blue)}
+.s{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s.thin{stroke-width:1.2;opacity:.6}.s.hot{stroke:#dfe8f5}
+.flow{stroke-dasharray:5 7;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.hook{animation:hook 3.2s ease-in-out infinite alternate}
+@keyframes hook{from{transform:translateY(0)}to{transform:translateY(34px)}}
+.bob{animation:bob 4s ease-in-out infinite alternate;transform-origin:50% 60%}
+@keyframes bob{from{transform:rotate(-2.5deg) translateY(2px)}to{transform:rotate(2.5deg) translateY(-3px)}}
+
+/* projects */
+.note{display:inline-block;border:1px dashed var(--line);color:var(--muted);padding:4px 10px;border-radius:4px;font-size:.84rem}
+.proj-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.proj-grid{grid-template-columns:1fr}}
+.proj{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.viewer{height:240px;position:relative;perspective:800px;cursor:grab;touch-action:pan-y;background:radial-gradient(ellipse at 50% 85%,rgba(63,111,181,.22),transparent 62%)}
+.viewer:active{cursor:grabbing}
+.model{position:absolute;left:50%;bottom:54px;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-18deg) rotateY(var(--ry,-30deg))}
+.box,.box i{position:absolute;transform-style:preserve-3d}
+.box i{display:block;background-color:var(--c1);background-image:linear-gradient(rgba(10,14,22,.55) 0 0);background-size:var(--ww,7px) var(--wh,9px);background-position:3px 4px;background-repeat:space;border:1px solid rgba(255,255,255,.14)}
+.box i.side{background-color:var(--c2)}
+.box i.top{background:var(--c3)}
+.pad{position:absolute;width:210px;height:210px;left:-105px;bottom:-105px;border-radius:50%;transform:rotateX(90deg);background:var(--panel-2) var(--hex);border:1px solid var(--line)}
+.drag-hint{position:absolute;right:10px;top:10px;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.proj-info{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line)}
+.proj-info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;color:var(--muted);font-size:.94rem}
+.proj-info dt{font-weight:600;color:var(--mist)}.proj-info dd{margin:0}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about-copy{display:flex;flex-direction:column;gap:16px;max-width:60ch;color:var(--mist)}
+.ne{display:flex;gap:16px;align-items:center;border-top:1px solid var(--line);padding-top:18px;color:var(--muted)}
+.ne svg{width:74px;height:74px;flex:none;color:var(--steel)}
+.person{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:24px;display:flex;flex-direction:column;gap:12px}
+.person .role{color:var(--steel);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.88rem}
+.person h3{font-size:1.3rem;letter-spacing:.12em}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:start}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.col{display:flex;flex-direction:column;gap:20px}
+.bcard{perspective:1100px;width:min(100%,470px);container-type:inline-size}
+.bcard-inner{position:relative;aspect-ratio:7/4;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1);cursor:pointer;border-radius:6px}
+.bcard-inner.flipped{transform:rotateY(180deg)}
+.bc{position:absolute;inset:0;border-radius:6px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 18px 40px rgba(0,0,0,.5);font-size:12px;font-size:3.1cqw;line-height:1.3}
+.bc-front{background:var(--paper);color:#1b2230;display:flex;flex-direction:column}
+.bc-top{position:relative;flex:62 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25em;text-align:center}
+.bc-top .sky{position:absolute;inset:auto 0 0 0;width:100%;height:78%}
+.bc-top > *:not(.sky){position:relative}
+.bc-top .lg{width:15%;color:#2f5fa8}
+.wm{font-family:var(--display);letter-spacing:.42em;margin-right:-.42em;font-size:1.6em;line-height:1.15;font-weight:600}
+.wm b{display:block;font-weight:600;color:#2f5fa8}
+.bc-tag{font-weight:600;font-size:1.08em}
+.bc-bot{flex:38 1 0;background:#17181b var(--hex);color:#fff;padding:.9em 1.4em;display:grid;grid-template-columns:1fr auto;align-content:center;gap:.1em 1em}
+.bc-bot .nm{font-weight:600;font-size:1.3em;letter-spacing:.04em}
+.bc-bot .r{text-align:right}
+.bc-bot .ad{grid-column:1/-1;font-size:1.05em;margin-top:.3em}
+.bc-back{transform:rotateY(180deg);background:#17181b var(--hex);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3em;text-align:center}
+.bc-back .lg{width:14%;color:#fff}
+.bc-back .wm b{color:#fff}
+.bc-back ul{list-style:none;margin:.5em 0 0;padding:0}
+.hint{color:var(--muted);font-size:.9rem}
+.details{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0}
+.details dt{color:var(--steel);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.84rem;padding-top:3px}
+.details dd{margin:0;overflow-wrap:anywhere}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:clamp(18px,3vw,28px)}
+form .full{grid-column:1/-1}
+@media (max-width:520px){form{grid-template-columns:1fr}}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mist)}
+input,select,textarea{font:400 1rem var(--body);color:var(--text);background:var(--ink);border:1px solid var(--line);border-radius:6px;padding:12px;min-height:46px;width:100%}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--steel);outline-offset:1px}
+.ready{display:none;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:14px}
+.ready.show{display:flex}
+.err{color:#ffb4a8;font-size:.94rem;min-height:1.2em}
+
+footer{border-top:1px solid var(--line);padding:26px 0 30px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.bar{display:none}
+@media (max-width:760px){
+  body{padding-bottom:62px}
+  .bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--panel);border-top:1px solid var(--line)}
+  .bar a{min-height:58px;display:flex;align-items:center;justify-content:center;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+  .bar a + a{background:var(--blue);color:#fff}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .loader{display:none}
+  .flow,.hook,.bob{animation:none}
+  .svc-inner,.bcard-inner{transition:none}
+}
+
+/* ===== polish layer ===== */
+:root{--gold:#e0a56c;--glow:rgba(63,111,181,.4)}
+body{background:radial-gradient(900px 520px at 88% 24%,rgba(63,111,181,.11),transparent 70%),radial-gradient(760px 520px at 0% 56%,rgba(224,165,108,.06),transparent 70%),radial-gradient(900px 600px at 100% 88%,rgba(63,111,181,.09),transparent 70%),var(--hex),var(--ink)}
+h2{font-size:clamp(1.6rem,3.8vw,2.6rem);background:linear-gradient(180deg,#fff,#b4c4dc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kicker{font-weight:600;letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;color:var(--gold);display:flex;align-items:center;gap:12px}
+.kicker::before{content:"";width:28px;height:1px;background:var(--gold)}
+.rule{width:110px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(224,165,108,0))}
+.head{gap:14px}
+
+.nav{position:sticky;background:linear-gradient(180deg,rgba(8,10,14,.72),rgba(8,10,14,0)) no-repeat;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transition:background .35s,border-color .35s}
+.nav.scrolled,.nav.open{background:rgba(18,19,22,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:2px;right:2px;bottom:6px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.links a:hover::after{transform:scaleX(1)}
+@media (max-width:800px){.links a::after{display:none}}
+
+.hero{margin-top:-59px;padding-top:59px;min-height:clamp(600px,90vh,880px)}
+.hero::after{background:linear-gradient(90deg,rgba(12,14,18,.92) 0%,rgba(12,14,18,.66) 36%,rgba(12,14,18,0) 64%),linear-gradient(180deg,rgba(12,14,18,.35) 0%,rgba(12,14,18,0) 22%,rgba(20,21,24,0) 66%,var(--ink) 100%),radial-gradient(120% 90% at 60% 40%,transparent 55%,rgba(8,9,12,.55) 100%)}
+.hero-copy{gap:20px;max-width:620px}
+.eyebrow{font-weight:600;letter-spacing:.34em;text-transform:uppercase;font-size:.8rem;color:var(--gold);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,7vw,4.8rem);background:linear-gradient(180deg,#fff 20%,#aebfd8);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 24px rgba(0,0,0,.55))}
+.tag{font-size:clamp(1.05rem,2.2vw,1.35rem);color:#e3eaf4}
+.lede{color:#b9c3d2;font-size:1.06rem}
+.btn{border-radius:8px;background:linear-gradient(180deg,#4f82cc,#3360a6);border-color:#4f82cc;box-shadow:0 10px 26px -10px var(--glow),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;min-height:50px;padding:0 24px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px var(--glow),inset 0 1px 0 rgba(255,255,255,.22);background:linear-gradient(180deg,#5b8dd6,#3a69b2)}
+.btn.ghost{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.22);box-shadow:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.btn.ghost:hover{background:rgba(255,255,255,.1);border-color:var(--gold)}
+.cue{position:absolute;right:clamp(16px,4vw,40px);bottom:34px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mist);writing-mode:vertical-rl}
+.cue i{display:block;width:1px;height:54px;background:linear-gradient(180deg,var(--gold),transparent);animation:cue 2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media (max-width:760px){.cue{display:none}.hero{min-height:640px}.hero::after{background:linear-gradient(180deg,rgba(12,14,18,.35) 0%,rgba(12,14,18,0) 26%,rgba(20,21,24,.88) 62%,var(--ink) 100%)}}
+
+.ribbon{border-block:1px solid var(--line);background:rgba(28,30,35,.7);overflow:hidden;padding:0}
+.track{display:flex;width:max-content;animation:slide 38s linear infinite}
+.track span{display:flex;align-items:center;gap:28px;padding:16px 14px;font-family:var(--display);letter-spacing:.2em;text-transform:uppercase;font-size:.82rem;color:var(--mist);white-space:nowrap}
+.track span::after{content:"";width:7px;height:7px;background:var(--gold);transform:rotate(45deg);margin-left:14px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+.stage{border-radius:16px;border-color:rgba(159,180,210,.28);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 6px rgba(255,255,255,.02),0 0 80px -30px var(--glow)}
+.stage-label{left:16px;bottom:16px;background:rgba(12,14,18,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 14px}
+.steps li{border-left-width:1px;padding-left:28px;transition:color .4s,border-color .4s,opacity .7s,transform .7s}
+.steps li.on{border-left-color:var(--gold)}
+.steps .n{font-size:2.6rem;letter-spacing:.06em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(127,156,196,.55)}
+.steps li.on .n{-webkit-text-stroke-color:var(--gold)}
+.steps h3{font-size:1.2rem}
+.steps p{font-size:1.06rem}
+
+.face,.proj,.person,form{background:linear-gradient(160deg,rgba(42,47,58,.92),rgba(24,26,31,.94));border-color:rgba(159,180,210,.16);box-shadow:0 24px 54px -28px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06);border-radius:14px}
+.svc-inner{height:350px;border-radius:14px}
+.svc-grid{counter-reset:s;gap:20px}
+.face{padding:22px}
+.face.front::before{counter-increment:s;content:"0" counter(s);position:absolute;top:16px;right:18px;font-family:var(--display);letter-spacing:.12em;font-size:.82rem;color:var(--gold)}
+.face.back{background:linear-gradient(160deg,#2c3c58,#1d2433)}
+.face svg{background:radial-gradient(closest-side,rgba(63,111,181,.22),transparent);color:#9db6da}
+.face .more::after{content:" \2192";color:var(--gold)}
+.svc:hover .face{border-color:rgba(127,156,196,.5);box-shadow:0 30px 60px -26px rgba(0,0,0,.9),0 0 50px -20px var(--glow),inset 0 1px 0 rgba(255,255,255,.08)}
+
+.proj{transition:transform .3s,border-color .3s,box-shadow .3s}
+.proj:hover{transform:translateY(-4px);border-color:rgba(127,156,196,.5)}
+.viewer{height:260px;background:linear-gradient(180deg,#0f1828 0%,#263653 46%,#8c6f66 70%,#d99a6c 78.9%,#2a2d34 79.2%,#1a1c21 100%)}
+.model{bottom:54px}
+.pad{background:radial-gradient(closest-side,rgba(0,0,0,.55),rgba(0,0,0,0));border:0;width:260px;height:260px;left:-130px;bottom:-130px}
+.box i{background-image:linear-gradient(rgba(255,206,140,.82) 0 0);border-color:rgba(255,255,255,.1);box-shadow:inset 0 -46px 40px -24px rgba(8,10,16,.55)}
+.box i.side{background-image:linear-gradient(rgba(10,14,22,.6) 0 0)}
+.box i.top{background-image:none;box-shadow:none}
+.drag-hint{background:rgba(12,14,18,.55);padding:5px 10px;border-radius:999px;color:var(--mist);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.proj-info{padding:20px 22px 22px}
+
+.about-copy p:first-child{font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:1.45;color:var(--text)}
+.ne{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:18px}
+.ne svg{color:var(--gold)}
+.person{padding:30px;gap:14px;position:relative;overflow:hidden}
+.person::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue))}
+.mono{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;letter-spacing:.08em;color:#fff;background:linear-gradient(140deg,#3f6fb5,#1f2c44);box-shadow:0 0 0 1px rgba(255,255,255,.15),0 0 0 6px rgba(63,111,181,.16)}
+.person .role{color:var(--gold)}
+
+.bcard{position:relative}
+.bcard::before{content:"";position:absolute;inset:8% 4% -6%;background:radial-gradient(closest-side,rgba(63,111,181,.5),transparent);filter:blur(30px);z-index:0}
+.bcard-inner{z-index:1}
+.bc{box-shadow:0 30px 60px -20px rgba(0,0,0,.75);border-radius:8px}
+.details{border-top:1px solid var(--line);padding-top:20px}
+.details dt{color:var(--gold)}
+.details a{text-decoration-color:rgba(224,165,108,.5);text-underline-offset:4px}
+input,select,textarea{background:rgba(10,12,16,.6);border-color:rgba(159,180,210,.22);border-radius:8px;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(224,165,108,.18)}
+form{padding:clamp(20px,3.4vw,34px);gap:16px}
+
+.foot-sky{display:block;width:100%;height:clamp(70px,12vw,130px);margin-top:clamp(30px,6vw,60px)}
+footer{background:#0f1013;border-top:0}
+.note{border-color:rgba(224,165,108,.45);color:#d8c3ad}
+
+.rv{transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.pre{opacity:0;transform:translateY(28px)}
+.svc-grid>.rv:nth-child(2),.proj-grid>.rv:nth-child(2){transition-delay:.08s}
+.svc-grid>.rv:nth-child(3),.proj-grid>.rv:nth-child(3){transition-delay:.16s}
+.svc-grid>.rv:nth-child(4){transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.track,.cue i{animation:none}.rv{transition:none}.btn,.proj{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 120 104">
+    <path d="M66 11L74 9M65 16.2L75 13.8M64 21.4L76 18.6M63 26.6L77 23.4M62 31.8L78 28.2M61 37L79 33M60 42.2L80 37.8M59 47.4L81 42.6M58 52.6L82 47.4M57 57.8L83 52.2M56 63L84 57" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M16 86V75h13M30 86L52 68L70 82M60 80L78 66L98 84" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 97Q60 80 114 97Q60 88 6 97Z" fill="currentColor"/>
+    <text x="47" y="87" font-size="8" font-family="Arial,sans-serif" font-weight="700" fill="currentColor">N</text>
+    <text x="75" y="89" font-size="8" font-family="Arial,sans-serif" font-weight="700" fill="currentColor">E</text>
+  </symbol>
+</svg>
+
+<div class="loader" aria-hidden="true">
+  <svg viewBox="0 0 120 104">
+    <path class="d" pathLength="1" d="M66 11L74 9M65 16.2L75 13.8M64 21.4L76 18.6M63 26.6L77 23.4M62 31.8L78 28.2M61 37L79 33M60 42.2L80 37.8M59 47.4L81 42.6M58 52.6L82 47.4M57 57.8L83 52.2M56 63L84 57"/>
+    <path class="d" pathLength="1" d="M16 86V75h13M30 86L52 68L70 82M60 80L78 66L98 84"/>
+    <path class="d" pathLength="1" d="M6 97Q60 80 114 97"/>
+  </svg>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Eshanya BuildPro, home"><svg aria-hidden="true"><use href="#logo"/></svg><span>ESHANYA BUILDPRO</span></a>
+    <button id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <ul class="links" id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <canvas id="skyline" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <p class="eyebrow">Mysuru, Karnataka</p>
+      <h1><span>ESHANYA</span><span>BUILDPRO</span></h1>
+      <p class="tag">Architects, Civil &amp; Structural Engineering Consultants</p>
+      <p class="lede">Planning, structural design, costing and site supervision from one office in Vijayanagar, Mysuru.</p>
+      <div class="cta">
+        <a class="btn" href="#services">See services</a>
+        <a class="btn ghost" href="tel:+919742481544">Call 97424 81544</a>
+      </div>
+    </div>
+  </div>
+  <div class="cue" aria-hidden="true">Scroll<i></i></div>
+</section>
+<div class="ribbon" aria-hidden="true"><div class="track"><span>Architectural &amp; Building Planning</span><span>3D Elevation</span><span>Interior Designing</span><span>Structural Designing</span><span>Estimation &amp; Costing</span><span>Building Construction</span><span>Site Supervision</span><span>Architectural &amp; Building Planning</span><span>3D Elevation</span><span>Interior Designing</span><span>Structural Designing</span><span>Estimation &amp; Costing</span><span>Building Construction</span><span>Site Supervision</span></div></div>
+
+<section id="process">
+  <div class="wrap">
+    <div class="head"><span class="kicker">Process</span><h2>From footing to facade</h2><div class="rule"></div><p>Scroll to watch one building go up in the order it is designed and built.</p></div>
+    <div class="story-grid">
+      <div class="stage"><canvas id="build" aria-hidden="true"></canvas><div class="stage-label" id="stageLabel">Stage 1 of 4 · Foundation</div></div>
+      <ol class="steps" id="steps">
+        <li class="on"><span class="n">01</span><h3>Foundation</h3><p>The site and the loads above decide the footing. Foundations are sized before anything is drawn in elevation.</p></li>
+        <li><span class="n">02</span><h3>Structural frame</h3><p>Columns and beams are designed as one frame, so every load has a clear path to the ground.</p></li>
+        <li><span class="n">03</span><h3>Floor slabs</h3><p>Slabs are worked out floor by floor, and the steel and concrete quantities feed straight into the estimate.</p></li>
+        <li><span class="n">04</span><h3>Finished building</h3><p>Elevation, interiors and supervision on site carry the drawings through to the completed structure.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head"><span class="kicker">What we do</span><h2>Services</h2><div class="rule"></div><p>Four services, as printed on the card. Select a card to see what each covers.</p></div>
+    <div class="svc-grid">
+      <div class="svc"><div class="svc-inner" role="button" tabindex="0" aria-pressed="false">
+        <div class="face front">
+          <svg viewBox="0 0 200 150" aria-hidden="true"><rect class="s" x="24" y="18" width="152" height="104"/><path class="s" d="M24 70h60M84 18v74M84 92h40M124 122V70h52M124 70V50"/><path class="s thin" d="M84 110a18 18 0 0 1 18-18M24 136h152M24 132v8M176 132v8"/><path class="s hot flow" d="M24 136h152"/></svg>
+          <h3>Architectural &amp; Building Planning</h3><span class="more">What it covers</span>
+        </div>
+        <div class="face back"><h3>Architectural &amp; Building Planning</h3><ul><li>Floor plans and site layout</li><li>Drawings prepared for approval</li><li>Working drawings for the site</li></ul><span class="more">Back</span></div>
+      </div></div>
+      <div class="svc"><div class="svc-inner" role="button" tabindex="0" aria-pressed="false">
+        <div class="face front">
+          <svg viewBox="0 0 200 150" aria-hidden="true"><g class="bob"><path class="s" d="M100 128L44 100V58l56 28zM100 128l56-28V58l-56 28zM44 58l28-34 56 28-28 34M128 52l28 6M72 24l56 28"/><path class="s thin" d="M62 98V78l16 8v20M118 104V90l22-11v14z"/></g><path class="s thin" d="M30 136h140"/></svg>
+          <h3>3D Elevation &amp; Interior Designing</h3><span class="more">What it covers</span>
+        </div>
+        <div class="face back"><h3>3D Elevation &amp; Interior Designing</h3><ul><li>Exterior elevations in 3D</li><li>Interior layouts and finishes</li><li>Views to review before building starts</li></ul><span class="more">Back</span></div>
+      </div></div>
+      <div class="svc"><div class="svc-inner" role="button" tabindex="0" aria-pressed="false">
+        <div class="face front">
+          <svg viewBox="0 0 200 150" aria-hidden="true"><path class="s" d="M40 130V26M100 130V26M160 130V26M40 26h120M40 60h120M40 94h120"/><path class="s thin" d="M28 130h144M32 136h16M92 136h16M152 136h16"/><path class="s hot flow" d="M100 26v104M40 60v70M160 60v70"/></svg>
+          <h3>Structural Designing, Estimation &amp; Costing</h3><span class="more">What it covers</span>
+        </div>
+        <div class="face back"><h3>Structural Designing, Estimation &amp; Costing</h3><ul><li>Foundation, column, beam and slab design</li><li>Steel and concrete quantities</li><li>Itemised cost estimate</li></ul><span class="more">Back</span></div>
+      </div></div>
+      <div class="svc"><div class="svc-inner" role="button" tabindex="0" aria-pressed="false">
+        <div class="face front">
+          <svg viewBox="0 0 200 150" aria-hidden="true"><path class="s" d="M56 132V22M48 132h16M40 34h124M56 22l-16 12M56 22l40 12"/><path class="s thin" d="M56 50l0 0M50 62h12M50 86h12M50 110h12"/><g class="hook"><path class="s hot" d="M140 34v30M134 64h12v8h-12z"/></g><path class="s" d="M104 132V112h64v20M104 112h64M110 112V98h52v14"/><path class="s thin" d="M96 132h80"/></svg>
+          <h3>Building Construction &amp; Supervision</h3><span class="more">What it covers</span>
+        </div>
+        <div class="face back"><h3>Building Construction &amp; Supervision</h3><ul><li>Construction of the building</li><li>Site visits at key stages</li><li>Work checked against the drawings</li></ul><span class="more">Back</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="head"><span class="kicker">Work</span><h2>Projects</h2><div class="rule"></div><p>Drag a model to turn it. <span class="note">Sample tiles: replace with real projects and photos</span></p></div>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="head"><span class="kicker">The practice</span><h2>About the firm</h2><div class="rule"></div></div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>Eshanya BuildPro is a Mysuru practice of architects, civil and structural engineering consultants. The same office that draws the plan also designs the structure, prepares the estimate and supervises the work on site.</p>
+        <p>That keeps the drawings, the steel schedule and the budget in step with each other from the first layout to handover.</p>
+        <div class="ne">
+          <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="s thin" cx="40" cy="40" r="34"/><path class="s thin" d="M40 6v8M40 66v8M6 40h8M66 40h8"/><path class="s hot" d="M40 40L62 18M62 18h-12M62 18v12"/><circle cx="40" cy="40" r="3" fill="currentColor"/></svg>
+          <p>Eshanya is the north-east, the direction traditional Indian building practice treats as the most auspicious. The logo marks it with N and E under the roof.</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="mono" aria-hidden="true">PC</div>
+        <span class="role">Structural Engineer</span>
+        <h3>Punith C.R</h3>
+        <p style="color:var(--mist)">Your point of contact for structural design, estimates and site queries.</p>
+        <span class="note">Add qualifications and years of experience here</span>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="head"><span class="kicker">Get in touch</span><h2>Contact</h2><div class="rule"></div></div>
+    <div class="contact-grid">
+      <div class="col">
+        <div class="bcard"><div class="bcard-inner" id="bcard" role="button" tabindex="0" aria-pressed="false" aria-label="Business card. Select to flip.">
+          <div class="bc bc-front">
+            <div class="bc-top">
+              <svg class="sky" viewBox="0 0 350 120" preserveAspectRatio="none" aria-hidden="true">
+                <g fill="#cfd7e4"><rect x="8" y="58" width="26" height="62"/><rect x="40" y="34" width="22" height="86"/><rect x="98" y="50" width="30" height="70"/><rect x="150" y="20" width="24" height="100"/><rect x="214" y="44" width="28" height="76"/><rect x="262" y="30" width="22" height="90"/><rect x="306" y="56" width="30" height="64"/></g>
+                <g fill="#b3c0d6"><rect x="28" y="70" width="20" height="50"/><rect x="66" y="46" width="26" height="74"/><rect x="128" y="64" width="24" height="56"/><rect x="182" y="38" width="26" height="82"/><rect x="240" y="62" width="24" height="58"/><rect x="288" y="48" width="24" height="72"/><rect x="330" y="72" width="20" height="48"/></g>
+                <g fill="#97a9c6"><rect x="56" y="80" width="16" height="40"/><rect x="118" y="84" width="14" height="36"/><rect x="204" y="78" width="14" height="42"/><rect x="278" y="86" width="14" height="34"/></g>
+              </svg>
+              <svg class="lg" viewBox="0 0 120 104" aria-hidden="true"><use href="#logo"/></svg>
+              <div class="wm"><b>ESHANYA</b>BUILDPRO</div>
+              <div class="bc-tag">Architects, Civil &amp; Structural Engineering Consultants</div>
+            </div>
+            <div class="bc-bot">
+              <div><div class="nm">PUNITH .C.R</div><div>Structural Engineer</div></div>
+              <div class="r"><div class="nm">9742481544</div><div>punithcr27@gmail.com</div></div>
+              <div class="ad"># 5015, 1st Floor, Raju Corner, Vijayanagar 4th Stage, Mysuru-570017</div>
+            </div>
+          </div>
+          <div class="bc bc-back">
+            <svg class="lg" viewBox="0 0 120 104" aria-hidden="true"><use href="#logo"/></svg>
+            <div class="wm"><b>ESHANYA</b>BUILDPRO</div>
+            <div class="bc-tag">Architects, Civil &amp; Structural Engineering Consultants</div>
+            <ul><li>Architectural &amp; Building Planning</li><li>3D Elevation, Interior Designing</li><li>Structural Designing, Estimation &amp; Costing</li><li>Building Construction &amp; Supervision</li></ul>
+          </div>
+        </div></div>
+        <p class="hint">Select the card to flip it.</p>
+        <dl class="details">
+          <dt>Phone</dt><dd><a href="tel:+919742481544">+91 97424 81544</a></dd>
+          <dt>Email</dt><dd><a href="mailto:punithcr27@gmail.com">punithcr27@gmail.com</a></dd>
+          <dt>Office</dt><dd>#5015, 1st Floor, Raju Corner, Vijayanagar 4th Stage, Mysuru 570017</dd>
+        </dl>
+        <div class="cta">
+          <a class="btn" href="https://wa.me/919742481544" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Raju+Corner+Vijayanagar+4th+Stage+Mysuru+570017" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+      <form id="enquiry" novalidate>
+        <label>Name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label>Phone<input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
+        <label>Email<input id="f-email" name="email" type="email" autocomplete="email"></label>
+        <label>Project type
+          <select id="f-type" name="type">
+            <option>Architectural &amp; building planning</option>
+            <option>3D elevation &amp; interiors</option>
+            <option>Structural design &amp; estimate</option>
+            <option>Construction &amp; supervision</option>
+          </select>
+        </label>
+        <label class="full">Message<textarea id="f-msg" name="message" placeholder="Site location, plot size, number of floors"></textarea></label>
+        <div class="full err" id="f-err" role="alert"></div>
+        <div class="full"><button class="btn" type="submit">Prepare enquiry</button></div>
+        <div class="full ready" id="ready">
+          <p>Your enquiry is written out. Choose how to send it:</p>
+          <div class="cta"><a class="btn" id="sendWa" target="_blank" rel="noopener" href="#">Send on WhatsApp</a><a class="btn ghost" id="sendMail" href="#">Send by email</a></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<svg class="foot-sky" viewBox="0 0 700 120" preserveAspectRatio="none" aria-hidden="true">
+<g fill="#1b2230"><rect x="10" y="58" width="40" height="62"/><rect x="70" y="30" width="34" height="90"/><rect x="150" y="48" width="46" height="72"/><rect x="236" y="16" width="36" height="104"/><rect x="330" y="42" width="44" height="78"/><rect x="420" y="26" width="34" height="94"/><rect x="500" y="54" width="46" height="66"/><rect x="590" y="36" width="36" height="84"/><rect x="650" y="62" width="44" height="58"/></g>
+<g fill="#151a24"><rect x="40" y="72" width="34" height="48"/><rect x="110" y="50" width="40" height="70"/><rect x="200" y="68" width="38" height="52"/><rect x="280" y="40" width="42" height="80"/><rect x="380" y="66" width="38" height="54"/><rect x="460" y="50" width="38" height="70"/><rect x="552" y="74" width="36" height="46"/><rect x="630" y="52" width="30" height="68"/></g>
+<rect x="0" y="112" width="700" height="8" fill="#0f1013"/></svg>
+<footer><div class="wrap"><span>Eshanya BuildPro · Architects, Civil &amp; Structural Engineering Consultants</span><span>Vijayanagar 4th Stage, Mysuru 570017</span></div></footer>
+
+<div class="bar"><a href="tel:+919742481544">Call</a><a href="https://wa.me/919742481544" target="_blank" rel="noopener">WhatsApp</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var small=matchMedia('(max-width: 760px)').matches;
+var clamp=function(v,a,b){return Math.min(b===undefined?1:b,Math.max(a===undefined?0:a,v))};
+var ease=function(k){return 1-Math.pow(1-k,3)};
+
+/* ---------- navigation ---------- */
+var nav=$('.nav'), menuBtn=$('#menuBtn');
+menuBtn.addEventListener('click',function(){var o=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)});
+$$('a[href^="#"]').forEach(function(a){
+  var id=a.getAttribute('href').slice(1); if(!id) return;
+  a.addEventListener('click',function(e){
+    var t=document.getElementById(id); if(!t) return;
+    e.preventDefault(); t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
+  });
+});
+function pressable(el,fn){
+  el.addEventListener('click',fn);
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}});
+}
+
+/* ---------- service cards ---------- */
+$$('.svc-inner').forEach(function(b){pressable(b,function(){var f=b.classList.toggle('flipped');b.setAttribute('aria-pressed',f)})});
+if(matchMedia('(hover:hover)').matches && !reduce){
+  $$('.svc').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();
+      c.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*14).toFixed(1)+'deg');
+      c.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5)*10).toFixed(1)+'deg')});
+    c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
+  });
+}
+
+/* ---------- business card ---------- */
+var bcard=$('#bcard');
+pressable(bcard,function(){var f=bcard.classList.toggle('flipped');bcard.setAttribute('aria-pressed',f)});
+
+/* ---------- project tiles (CSS 3D) ---------- */
+var projects=[
+  {title:'Residence',type:'Independent house',ry:-32,c:['#6f86a8','#566c8e','#c9d3e0'],boxes:[[92,46,70,0,0,0],[56,34,52,-14,46,-6],[30,6,74,34,46,0]]},
+  {title:'Apartment block',type:'Multi-storey residential',ry:28,c:['#5d7fa6','#48648a','#b9c6d8'],boxes:[[84,120,58,0,0,0],[20,132,20,-22,0,24],[96,8,70,0,0,0]]},
+  {title:'Commercial building',type:'Shops and offices',ry:-40,c:['#7f9cc4','#6481a8','#dfe7f2'],boxes:[[112,30,84,0,0,0],[58,112,50,10,30,-6],[40,58,40,-26,30,14]]}
+];
+function face(cls,w,h,st){var i=document.createElement('i');i.className=cls;i.style.cssText='width:'+w+'px;height:'+h+'px;'+st;return i}
+function box(w,h,d,x,y,z){
+  var b=document.createElement('div');b.className='box';b.style.transform='translate3d('+x+'px,'+(-y)+'px,'+z+'px)';
+  b.appendChild(face('',w,h,'left:'+(-w/2)+'px;bottom:0;transform:translateZ('+(d/2)+'px)'));
+  b.appendChild(face('',w,h,'left:'+(-w/2)+'px;bottom:0;transform:rotateY(180deg) translateZ('+(d/2)+'px)'));
+  b.appendChild(face('side',d,h,'left:'+(-d/2)+'px;bottom:0;transform:rotateY(90deg) translateZ('+(w/2)+'px)'));
+  b.appendChild(face('side',d,h,'left:'+(-d/2)+'px;bottom:0;transform:rotateY(-90deg) translateZ('+(w/2)+'px)'));
+  b.appendChild(face('top',w,d,'left:'+(-w/2)+'px;bottom:'+(h-d/2)+'px;transform:rotateX(90deg)'));
+  return b;
+}
+var grid=$('#projGrid');
+projects.forEach(function(p){
+  var card=document.createElement('article');card.className='proj';
+  var v=document.createElement('div');v.className='viewer';v.tabIndex=0;v.setAttribute('role','img');v.setAttribute('aria-label',p.title+' sample model. Drag or use arrow keys to rotate.');
+  var m=document.createElement('div');m.className='model';
+  m.style.setProperty('--c1',p.c[0]);m.style.setProperty('--c2',p.c[1]);m.style.setProperty('--c3',p.c[2]);
+  var pad=document.createElement('div');pad.className='pad';m.appendChild(pad);
+  p.boxes.forEach(function(b){m.appendChild(box.apply(null,b))});
+  var ry=p.ry;var set=function(){m.style.setProperty('--ry',ry+'deg')};set();
+  var hint=document.createElement('span');hint.className='drag-hint';hint.textContent='Drag to rotate';
+  v.appendChild(m);v.appendChild(hint);
+  var last=null;
+  v.addEventListener('pointerdown',function(e){last=e.clientX;try{v.setPointerCapture(e.pointerId)}catch(_){}} );
+  v.addEventListener('pointermove',function(e){if(last===null)return;ry+=(e.clientX-last)*.7;last=e.clientX;set()});
+  ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){v.addEventListener(n,function(){last=null})});
+  v.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){ry-=12;set()}else if(e.key==='ArrowRight'){ry+=12;set()}});
+  var info=document.createElement('div');info.className='proj-info';
+  info.innerHTML='<h3></h3><dl><dt>Type</dt><dd></dd><dt>Location</dt><dd>Add location</dd><dt>Scope</dt><dd>Add scope of work</dd></dl>';
+  $('h3',info).textContent=p.title;$('dd',info).textContent=p.type;
+  card.appendChild(v);card.appendChild(info);grid.appendChild(card);
+});
+
+/* ---------- enquiry form ---------- */
+var form=$('#enquiry');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=$('#f-name').value.trim(), phone=$('#f-phone').value.trim(), email=$('#f-email').value.trim(), type=$('#f-type').value, msg=$('#f-msg').value.trim();
+  var err=$('#f-err'), ready=$('#ready');
+  if(!name||!phone){err.textContent='Enter your name and phone number so the office can call you back.';ready.classList.remove('show');return}
+  err.textContent='';
+  var text='Enquiry for Eshanya BuildPro\nName: '+name+'\nPhone: '+phone+(email?'\nEmail: '+email:'')+'\nProject type: '+type+(msg?'\nDetails: '+msg:'');
+  $('#sendWa').href='https://wa.me/919742481544?text='+encodeURIComponent(text);
+  $('#sendMail').href='mailto:punithcr27@gmail.com?subject='+encodeURIComponent('Project enquiry: '+type)+'&body='+encodeURIComponent(text);
+  ready.classList.add('show');
+});
+
+/* ---------- 3D scenes ---------- */
+var T=window.THREE, hero=null, story=null;
+var stepsEl=$('#steps'), stepItems=$$('#steps li'), stageLabel=$('#stageLabel');
+var stageNames=['Foundation','Structural frame','Floor slabs','Finished building'];
+var INK=0x141518;
+
+function hexTexture(rx,ry){
+  var c=document.createElement('canvas');c.width=64;c.height=128;var x=c.getContext('2d');
+  x.fillStyle='#141518';x.fillRect(0,0,64,128);x.scale(64/30,128/52);
+  x.strokeStyle='rgba(127,156,196,.3)';x.lineWidth=.7;x.beginPath();
+  x.moveTo(15,0);x.lineTo(30,8.66);x.lineTo(30,25.98);x.lineTo(15,34.64);x.lineTo(0,25.98);x.lineTo(0,8.66);x.closePath();
+  x.moveTo(15,34.64);x.lineTo(15,52);x.stroke();
+  var t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(rx,ry);t.anisotropy=4;return t;
+}
+function windowTexture(){
+  var c=document.createElement('canvas');c.width=64;c.height=128;var x=c.getContext('2d');var cells=[];
+  for(var i=0;i<32;i++)cells.push(Math.random()<.4);
+  var t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.magFilter=T.NearestFilter;
+  var o={tex:t,cells:cells,draw:function(){
+    x.fillStyle='#000';x.fillRect(0,0,64,128);
+    for(var i=0;i<32;i++){x.fillStyle=cells[i]?(i%5?'#a9c0e2':'#ecd9ab'):'#0b0f16';x.fillRect((i%4)*16+3,Math.floor(i/4)*16+4,10,8)}
+    t.needsUpdate=true}};
+  o.draw();return o;
+}
+function scaleUV(geo,ru,rv){var uv=geo.attributes.uv;for(var i=0;i<uv.count;i++)uv.setXY(i,uv.getX(i)*ru,uv.getY(i)*rv);return geo}
+function makeRenderer(canvas){
+  var r=new T.WebGLRenderer({canvas:canvas,antialias:!small,powerPreference:'high-performance'});
+  r.setPixelRatio(Math.min(window.devicePixelRatio||1,small?1.5:2));r.setClearColor(INK,1);return r;
+}
+function fit(o){
+  var c=o.r.domElement,w=c.clientWidth,h=c.clientHeight;if(!w||!h)return false;
+  if(o.w!==w||o.h!==h){o.w=w;o.h=h;o.r.setSize(w,h,false);o.cam.aspect=w/h;if(o.onfit)o.onfit(w,h);o.cam.updateProjectionMatrix();return true}
+  return false;
+}
+
+var SH=!small;
+function skyDome(scene,top,mid,glow,hz){
+  var c=document.createElement('canvas');c.width=4;c.height=256;var x=c.getContext('2d');
+  var g=x.createLinearGradient(0,0,0,256);
+  g.addColorStop(0,top);g.addColorStop(.3,mid);g.addColorStop(.455,glow);g.addColorStop(.5,hz);g.addColorStop(1,hz);
+  x.fillStyle=g;x.fillRect(0,0,4,256);
+  var m=new T.Mesh(new T.SphereGeometry(220,24,16),new T.MeshBasicMaterial({map:new T.CanvasTexture(c),side:T.BackSide,fog:false,depthWrite:false}));
+  scene.add(m);return m;
+}
+function facadeTex(wall,glass,big){
+  var c=document.createElement('canvas'),e=document.createElement('canvas');c.width=e.width=64;c.height=e.height=128;
+  var x=c.getContext('2d'),y=e.getContext('2d'),cells=[],i,cx,cy;
+  for(i=0;i<32;i++)cells.push(Math.random()<.42);
+  x.fillStyle=wall;x.fillRect(0,0,64,128);
+  for(i=0;i<32;i++){cx=(i%4)*16;cy=Math.floor(i/4)*16;
+    x.fillStyle='rgba(0,0,0,.22)';x.fillRect(cx,cy+15,16,1);
+    x.fillStyle=glass;if(big)x.fillRect(cx+1,cy+1,14,13);else x.fillRect(cx+3,cy+3,10,9);
+    if(!big){x.fillStyle='rgba(255,255,255,.2)';x.fillRect(cx+2,cy+12,12,1)}
+    x.fillStyle='rgba(0,0,0,.4)';x.fillRect(cx+7.5,cy+(big?1:3),1,big?13:9);
+  }
+  var map=new T.CanvasTexture(c),em=new T.CanvasTexture(e);
+  [map,em].forEach(function(t){t.wrapS=t.wrapT=T.RepeatWrapping;t.anisotropy=4});
+  var o={map:map,em:em,cells:cells,draw:function(){
+    y.fillStyle='#000';y.fillRect(0,0,64,128);
+    for(var i=0;i<32;i++){if(!cells[i])continue;var cx=(i%4)*16,cy=Math.floor(i/4)*16;
+      y.fillStyle=i%3?'#ffcf8f':'#cfe0ff';if(big)y.fillRect(cx+1,cy+1,14,13);else y.fillRect(cx+3,cy+3,10,9)}
+    em.needsUpdate=true}};
+  o.draw();return o;
+}
+function streetTexture(r){
+  var c=document.createElement('canvas');c.width=c.height=128;var x=c.getContext('2d'),i;
+  x.fillStyle='#262a30';x.fillRect(0,0,128,128);
+  x.fillStyle='#1f2329';x.fillRect(20,20,88,88);
+  x.fillStyle='#0f1114';x.fillRect(0,0,128,13);x.fillRect(0,115,128,13);x.fillRect(0,0,13,128);x.fillRect(115,0,13,128);
+  x.fillStyle='#454b55';x.fillRect(13,13,102,1);x.fillRect(13,114,102,1);x.fillRect(13,13,1,102);x.fillRect(114,13,1,102);
+  x.fillStyle='#cfc7a6';
+  for(i=22;i<106;i+=16){x.fillRect(i,0,8,1);x.fillRect(i,127,8,1);x.fillRect(0,i,1,8);x.fillRect(127,i,1,8)}
+  var t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(33,33);t.anisotropy=r.capabilities.getMaxAnisotropy();return t;
+}
+function soilTexture(){
+  var c=document.createElement('canvas');c.width=c.height=128;var x=c.getContext('2d');
+  x.fillStyle='#5a4f43';x.fillRect(0,0,128,128);
+  for(var i=0;i<1400;i++){var v=Math.random();x.fillStyle=v<.5?'rgba(30,24,18,.35)':'rgba(190,170,140,.22)';x.fillRect(Math.random()*128,Math.random()*128,1+Math.random()*2,1+Math.random()*2)}
+  var t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(26,26);t.anisotropy=4;return t;
+}
+function shadowSun(r,scene,color,intensity,pos,span,size){
+  var sun=new T.DirectionalLight(color,intensity);sun.position.set(pos[0],pos[1],pos[2]);
+  if(SH){r.shadowMap.enabled=true;r.shadowMap.type=T.PCFSoftShadowMap;sun.castShadow=true;
+    sun.shadow.mapSize.set(size,size);var sc=sun.shadow.camera;sc.left=-span;sc.right=span;sc.top=span;sc.bottom=-span;sc.near=1;sc.far=260;sun.shadow.bias=-.0006}
+  scene.add(sun);return sun;
+}
+function lit(m){if(SH){m.castShadow=true;m.receiveShadow=true}return m}
+
+function buildHero(){
+  var r=makeRenderer($('#skyline')),scene=new T.Scene();scene.fog=new T.Fog(0x4a556b,40,125);
+  var cam=new T.PerspectiveCamera(42,1,.1,600);
+  skyDome(scene,'#0a1322','#24344f','#d89466','#4a556b');
+  scene.add(new T.HemisphereLight(0x93abd4,0x2a2420,.75));
+  shadowSun(r,scene,0xffb884,1.05,[-70,34,-46],78,2048);
+  var ground=new T.Mesh(new T.PlaneGeometry(297,297),new T.MeshStandardMaterial({map:streetTexture(r),roughness:.95,metalness:0}));
+  ground.rotation.x=-Math.PI/2;ground.receiveShadow=SH;scene.add(ground);
+  var styles=[['#8d9299','#18212e',false,0x4b4f55],['#b3a794','#1b2230',false,0x5a5348],['#3a4a60','#141d2b',true,0x232c3a],['#c4c7cb','#1a2330',false,0x63676d]];
+  var fac=styles.map(function(s){return facadeTex(s[0],s[1],s[2])});
+  var sideM=fac.map(function(f){return new T.MeshStandardMaterial({map:f.map,emissive:0xffffff,emissiveMap:f.em,emissiveIntensity:.9,roughness:.8,metalness:.05})});
+  var roofM=styles.map(function(s){return new T.MeshStandardMaterial({color:s[3],roughness:1})});
+  var kitM=new T.MeshStandardMaterial({color:0x7a7f87,roughness:.9});
+  var beaconM=new T.MeshBasicMaterial({color:0xff3b30});
+  var keep=small?.34:.6,plots=[];
+  for(var gx=-7;gx<=7;gx++)for(var gz=-7;gz<=7;gz++){
+    var x=gx*9+(Math.random()-.5)*1.6,z=gz*9+(Math.random()-.5)*1.6;
+    if(Math.hypot(x,z)<12||Math.random()>keep)continue;
+    var w=3+Math.random()*2.4,d=3+Math.random()*2.4,h=3.5+Math.random()*Math.random()*21;
+    if(Math.hypot(x,z)>36)h=Math.min(h,8);else h=Math.min(h,15);
+    var si=h>13?(Math.random()<.6?2:3):Math.floor(Math.random()*4);
+    var geo=scaleUV(new T.BoxGeometry(w,h,d),Math.max(1,Math.round(w/.8))/4,Math.max(1,Math.round(h))/8);
+    var s=sideM[si],tp=roofM[si];
+    var m=lit(new T.Mesh(geo,[s,s,tp,tp,s,s]));m.position.set(x,h/2,z);scene.add(m);
+    var k=.7+Math.random()*.7,kit=lit(new T.Mesh(new T.BoxGeometry(k,k*.7,k),kitM));kit.position.set(x+(Math.random()-.5)*(w-k-.4),h+k*.35,z+(Math.random()-.5)*(d-k-.4));scene.add(kit);
+    if(h>15){var mast=new T.Mesh(new T.BoxGeometry(.08,2.2,.08),kitM);mast.position.set(x,h+1.1,z);scene.add(mast);
+      var b=new T.Mesh(new T.SphereGeometry(.16,8,6),beaconM);b.position.set(x,h+2.3,z);scene.add(b)}
+    plots.push([gx*9,gz*9]);
+  }
+  /* street trees */
+  var trees=new T.InstancedMesh(new T.IcosahedronGeometry(.62,0),new T.MeshStandardMaterial({color:0x2f4a35,roughness:1,flatShading:true}),plots.length*2);
+  var dm=new T.Object3D(),ti=0;
+  plots.forEach(function(p){for(var q=0;q<2;q++){var sx=Math.random()<.5?-1:1,sz=Math.random()<.5?-1:1,sc=.7+Math.random()*.6;
+    dm.position.set(p[0]+sx*3.35,.75*sc,p[1]+sz*(1+Math.random()*2.3));dm.scale.set(sc,sc*1.25,sc);dm.updateMatrix();trees.setMatrixAt(ti++,dm.matrix)}});
+  trees.castShadow=SH;scene.add(trees);
+  /* street lamps */
+  var lp=[];for(var a=-7;a<=6;a++)for(var c=-7;c<=6;c++){lp.push(4.5+a*9+1.05,1.5,4.5+c*9+1.05)}
+  var lg=new T.BufferGeometry();lg.setAttribute('position',new T.Float32BufferAttribute(lp,3));
+  scene.add(new T.Points(lg,new T.PointsMaterial({color:0xffc98a,size:.75,sizeAttenuation:true})));
+  /* traffic */
+  var headM=new T.MeshBasicMaterial({color:0xfff2cf}),tailM=new T.MeshBasicMaterial({color:0xff3a2a}),bodyM=new T.MeshStandardMaterial({color:0x1a1d22,roughness:.6});
+  var cars=[],nc=small?16:44;
+  for(var i=0;i<nc;i++){
+    var g=new T.Group();
+    var body=new T.Mesh(new T.BoxGeometry(.95,.32,.44),bodyM);body.position.y=.2;g.add(body);
+    var hl=new T.Mesh(new T.BoxGeometry(.1,.14,.4),headM);hl.position.set(.5,.22,0);g.add(hl);
+    var tl=new T.Mesh(new T.BoxGeometry(.1,.12,.4),tailM);tl.position.set(-.5,.22,0);g.add(tl);
+    var dir=Math.random()<.5?-1:1,alongX=Math.random()<.5,line=4.5+Math.floor(Math.random()*14-7)*9;
+    if(alongX){g.rotation.y=dir>0?0:Math.PI}else{g.rotation.y=dir>0?-Math.PI/2:Math.PI/2}
+    scene.add(g);cars.push({g:g,dir:dir,ax:alongX,line:line+(alongX?dir:-dir)*.38,sp:4+Math.random()*5,off:Math.random()*140});
+  }
+  /* the striped tower from the logo */
+  var tower=new T.Group(),tf=fac[2];
+  var coreGeo=scaleUV(new T.BoxGeometry(4,18,4),1.25,2);
+  var core=lit(new T.Mesh(coreGeo,new T.MeshStandardMaterial({map:tf.map,emissive:0xffffff,emissiveMap:tf.em,emissiveIntensity:1,roughness:.35,metalness:.2})));core.position.y=9;tower.add(core);
+  var slabMat=new T.MeshStandardMaterial({color:0xe6e9ee,roughness:.7});
+  for(i=0;i<16;i++){var sz=6.6-i*.17;var sl=lit(new T.Mesh(new T.BoxGeometry(sz,.3,sz),slabMat));sl.position.y=.8+i*1.12;tower.add(sl)}
+  var spire=new T.Mesh(new T.BoxGeometry(.24,4,.24),slabMat);spire.position.y=20;tower.add(spire);
+  var tb=new T.Mesh(new T.SphereGeometry(.2,8,6),beaconM);tb.position.y=22.1;tower.add(tb);
+  scene.add(tower);
+  var o={r:r,scene:scene,cam:cam,flick:0,
+    onfit:function(w,h){if(w>=900)cam.setViewOffset(w,h,-w*.2,0,w,h);else cam.setViewOffset(w,h,0,h*.16,w,h)},
+    render:function(t,px,py){
+      var a=.7+t*.035+px*.3,R=o.w<760?64:50;
+      cam.position.set(Math.cos(a)*R,17-py*3,Math.sin(a)*R);cam.lookAt(0,8.5,0);
+      for(var i=0;i<cars.length;i++){var c=cars[i],p=((t*c.sp*c.dir+c.off)%140+140)%140-70;
+        if(c.ax)c.g.position.set(p,0,c.line);else c.g.position.set(c.line,0,p)}
+      beaconM.color.setHex(Math.sin(t*3.2)>0?0xff3b30:0x3a0c0a);
+      if(t-o.flick>.4){o.flick=t;var f=fac[Math.floor(Math.random()*fac.length)];var k=Math.floor(Math.random()*32);f.cells[k]=!f.cells[k];f.draw()}
+      r.render(scene,cam)}};
+  return o;
+}
+
+function buildStory(){
+  var r=makeRenderer($('#build')),scene=new T.Scene();scene.fog=new T.Fog(0x5a6272,30,95);
+  var cam=new T.PerspectiveCamera(40,1,.1,600);
+  skyDome(scene,'#111c30','#3c5073','#e0a06e','#5a6272');
+  scene.add(new T.HemisphereLight(0xbcd0f0,0x4a4036,.8));
+  shadowSun(r,scene,0xffd2a0,1.1,[-14,17,10],17,1024);
+  var ground=new T.Mesh(new T.PlaneGeometry(200,200),new T.MeshStandardMaterial({map:soilTexture(),roughness:1}));
+  ground.rotation.x=-Math.PI/2;ground.receiveShadow=SH;scene.add(ground);
+  var nx=3,nz=2,bay=3,floors=small?5:6,fh=1.6,base=.6,W=nx*bay,D=nz*bay,x0=-W/2,z0=-D/2;
+  var concrete=new T.MeshStandardMaterial({color:0xb9b6ae,roughness:.92}),footM=new T.MeshStandardMaterial({color:0x9a978f,roughness:1});
+  var wall=facadeTex('#d8d2c4','#1b2432',false);
+  var wallM=new T.MeshStandardMaterial({map:wall.map,emissive:0xffffff,emissiveMap:wall.em,emissiveIntensity:.85,roughness:.85});
+  var items=[];
+  function add(mesh,t0,dur,mode,y){scene.add(lit(mesh));items.push({m:mesh,t0:t0,dur:dur,mode:mode,y:y})}
+  var pit=new T.Mesh(new T.BoxGeometry(W+2.6,.16,D+2.6),new T.MeshStandardMaterial({color:0x3e352c,roughness:1}));pit.position.y=.08;pit.receiveShadow=SH;scene.add(pit);
+  var n=0,i,j;
+  for(i=0;i<=nx;i++)for(j=0;j<=nz;j++){
+    var f=new T.Mesh(new T.BoxGeometry(1.1,.44,1.1),footM);f.position.set(x0+i*bay,.38,z0+j*bay);add(f,.02+n*.014,.05,'pop');n++;
+  }
+  var colGeo=new T.BoxGeometry(.32,fh,.32);colGeo.translate(0,fh/2,0);
+  var bxGeo=new T.BoxGeometry(bay,.3,.26);bxGeo.translate(bay/2,0,0);
+  var bzGeo=new T.BoxGeometry(.26,.3,bay);bzGeo.translate(0,0,bay/2);
+  var panelH=fh-.3;
+  var fGeo=scaleUV(new T.BoxGeometry(W+.2,panelH,.14),3,1/8);fGeo.translate(0,panelH/2,0);
+  var sGeo=scaleUV(new T.BoxGeometry(.14,panelH,D+.2),2,1/8);sGeo.translate(0,panelH/2,0);
+  for(var fl=0;fl<floors;fl++){
+    var y=base+fl*fh,tc=.25+fl*(.22/floors),ts=.52+fl*(.2/floors),tf=.76+fl*(.19/floors);
+    for(i=0;i<=nx;i++)for(j=0;j<=nz;j++){
+      var c=new T.Mesh(colGeo,concrete);c.position.set(x0+i*bay,y,z0+j*bay);add(c,tc,.05,'y');
+      if(i<nx){var bx=new T.Mesh(bxGeo,concrete);bx.position.set(x0+i*bay,y+fh-.15,z0+j*bay);add(bx,tc+.02,.05,'x')}
+      if(j<nz){var bz=new T.Mesh(bzGeo,concrete);bz.position.set(x0+i*bay,y+fh-.15,z0+j*bay);add(bz,tc+.02,.05,'z')}
+    }
+    var sm=new T.MeshStandardMaterial({color:0xc8c5bd,roughness:.9,transparent:true});
+    var sl=new T.Mesh(new T.BoxGeometry(W+1,.16,D+1),sm);sl.position.set(0,y+fh+.08,0);add(sl,ts,.06,'drop',y+fh+.08);
+    [[fGeo,0,D/2+.1],[fGeo,0,-D/2-.1],[sGeo,W/2+.1,0],[sGeo,-W/2-.1,0]].forEach(function(p){
+      var g=new T.Mesh(p[0],wallM);g.position.set(p[1],y+.02,p[2]);add(g,tf,.05,'y');
+    });
+  }
+  var topY=base+floors*fh;
+  /* roof: parapet and water tank */
+  var parM=new T.MeshStandardMaterial({color:0xd8d2c4,roughness:.9});
+  [[W+1,.5,.14,0,D/2+.43],[W+1,.5,.14,0,-D/2-.43],[.14,.5,D+1,W/2+.43,0],[.14,.5,D+1,-W/2-.43,0]].forEach(function(p){
+    var g=new T.BoxGeometry(p[0],p[1],p[2]);g.translate(0,.25,0);var m=new T.Mesh(g,parM);m.position.set(p[3],topY+.16,p[4]);add(m,.955,.03,'y')});
+  var tg=new T.CylinderGeometry(.55,.55,1,14);tg.translate(0,.5,0);
+  var tank=new T.Mesh(tg,new T.MeshStandardMaterial({color:0x20242a,roughness:.6}));tank.position.set(W/2-1.4,topY+.16,-D/2+1.3);add(tank,.97,.03,'y');
+  /* tower crane, on site while the frame and slabs go up */
+  var craneM=new T.MeshStandardMaterial({color:0xe3a92c,roughness:.7}),crane=new T.Group(),ch=topY+5;
+  var mast=lit(new T.Mesh(new T.BoxGeometry(.45,ch,.45),craneM));mast.position.y=ch/2;crane.add(mast);
+  var jib=new T.Group();jib.position.y=ch;
+  var arm=lit(new T.Mesh(new T.BoxGeometry(13,.28,.3),craneM));arm.position.x=4;jib.add(arm);
+  var cw=lit(new T.Mesh(new T.BoxGeometry(1.2,.9,.8),new T.MeshStandardMaterial({color:0x6c6f75,roughness:1})));cw.position.set(-2,-.3,0);jib.add(cw);
+  var cab=new T.Mesh(new T.BoxGeometry(.7,.7,.7),craneM);cab.position.set(.5,-.5,.4);jib.add(cab);
+  var cable=new T.Mesh(new T.BoxGeometry(.04,4,.04),new T.MeshBasicMaterial({color:0x22252b}));cable.position.set(7.5,-2,0);jib.add(cable);
+  var hook=lit(new T.Mesh(new T.BoxGeometry(.9,.12,.9),concrete));hook.position.set(7.5,-4,0);jib.add(hook);
+  crane.add(jib);crane.position.set(-W/2-2.6,0,-D/2-2.2);scene.add(crane);
+  /* people for scale, and trees at the site edge */
+  var vest=new T.MeshStandardMaterial({color:0xe2702a,roughness:.9}),helm=new T.MeshStandardMaterial({color:0xf2c230,roughness:.6});
+  [[W/2+2.2,D/2+1.6],[W/2+3,D/2+1.1],[-1.5,D/2+2.6],[-W/2-1.4,1.2]].forEach(function(p){
+    var b=lit(new T.Mesh(new T.CylinderGeometry(.12,.15,.62,8),vest));b.position.set(p[0],.31,p[1]);scene.add(b);
+    var h=lit(new T.Mesh(new T.SphereGeometry(.13,10,8),helm));h.position.set(p[0],.74,p[1]);scene.add(h)});
+  var leaf=new T.MeshStandardMaterial({color:0x3d6a45,roughness:1,flatShading:true}),bark=new T.MeshStandardMaterial({color:0x4a3a2c,roughness:1});
+  [[W/2+5,-D/2-3,1.2],[W/2+6.2,2,1],[-W/2-6,D/2+3,1.3],[2,D/2+6,1.1],[-3,-D/2-6.5,1.25],[W/2+7,-D/2-7,1]].forEach(function(p){
+    var tr=lit(new T.Mesh(new T.CylinderGeometry(.1,.14,1.2,6),bark));tr.position.set(p[0],.6,p[1]);scene.add(tr);
+    var cr=lit(new T.Mesh(new T.IcosahedronGeometry(.95*p[2],1),leaf));cr.position.set(p[0],1.2+.8*p[2],p[1]);cr.scale.y=1.15;scene.add(cr)});
+  var o={r:r,scene:scene,cam:cam,p:-1,
+    apply:function(p){
+      for(var q=0;q<items.length;q++){var it=items[q],k=ease(clamp((p-it.t0)/it.dur)),m=it.m;
+        m.visible=k>.001;if(!m.visible)continue;
+        if(it.mode==='y')m.scale.y=k;else if(it.mode==='x')m.scale.x=k;else if(it.mode==='z')m.scale.z=k;
+        else if(it.mode==='pop')m.scale.set(k,k,k);
+        else{m.position.y=it.y+(1-k)*3;m.material.opacity=k}
+      }
+      crane.visible=p>.2&&p<.93},
+    render:function(t,p){
+      if(p!==o.p){o.apply(p);o.p=p}
+      jib.rotation.y=.5+Math.sin(t*.25)*.9;
+      var a=.9+p*1.5+t*.05,R=o.w/o.h<1.2?29:24;
+      cam.position.set(Math.cos(a)*R,6.5+p*4.5,Math.sin(a)*R);cam.lookAt(0,topY*(.32+.18*p),0);
+      r.render(scene,cam)}};
+  return o;
+}
+
+function storyProgress(){
+  var r=stepsEl.getBoundingClientRect();
+  return clamp((window.innerHeight*(small?.74:.6)-r.top)/r.height);
+}
+var lastIdx=-1;
+function setStage(p){
+  var idx=Math.min(3,Math.floor(p*4));if(idx===lastIdx)return;lastIdx=idx;
+  stepItems.forEach(function(li,i){li.classList.toggle('on',i<=idx)});
+  stageLabel.textContent='Stage '+(idx+1)+' of 4 · '+stageNames[idx];
+}
+
+if(!T){document.documentElement.classList.add('no3d')}
+else{
+  try{hero=buildHero()}catch(e){hero=null}
+  try{story=buildStory()}catch(e){story=null;document.documentElement.classList.add('no3d')}
+}
+
+var px=0,py=0,tx=0,ty=0;
+window.addEventListener('pointermove',function(e){tx=(e.clientX/window.innerWidth-.5)*2;ty=(e.clientY/window.innerHeight-.5)*2},{passive:true});
+var heroOn=true,storyOn=false;
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.target.id==='skyline')heroOn=e.isIntersecting;else storyOn=e.isIntersecting})});
+  io.observe($('#skyline'));io.observe($('#build'));
+}else{storyOn=true}
+
+if(reduce){
+  stepItems.forEach(function(li){li.classList.add('on')});stageLabel.textContent='Stage 4 of 4 · Finished building';
+  var still=function(){if(hero){fit(hero);hero.render(0,0,0)}if(story){fit(story);story.render(0,1)}};
+  still();window.addEventListener('resize',still);
+}else{
+  var t0=performance.now(),prev=t0,frames=0,acc=0,level=0,frozen=false,heroDrawn=false,lastP=-1;
+  var loop=function(now){
+    requestAnimationFrame(loop);
+    var t=(now-t0)/1000,dt=now-prev;prev=now;
+    px+=(tx-px)*.05;py+=(ty-py)*.05;
+    var p=storyProgress();setStage(p);
+    var eff=Math.max(p,.14),drew=false;
+    if(hero&&heroOn){var hf=fit(hero);if(!frozen||hf||!heroDrawn){hero.render(frozen?0:t,frozen?0:px,frozen?0:py);heroDrawn=true;drew=!frozen}}
+    if(story&&storyOn){var sf=fit(story);if(!frozen||sf||eff!==lastP){story.render(frozen?0:t,eff);lastP=eff;drew=drew||!frozen}}
+    /* frame-rate guard: lower resolution first, then stop the idle animation */
+    if(drew&&dt<250){frames++;acc+=dt;
+      if(frames>=120){var avg=acc/frames;frames=0;acc=0;
+        if(avg>33){level++;
+          if(level===1){[hero,story].forEach(function(o){if(o){o.r.setPixelRatio(1);o.w=0}})}
+          else{frozen=true}
+        }
+      }
+    }
+  };
+  requestAnimationFrame(loop);
+}
+})();
+</script>
+<script>
+(function(){
+var nav=document.querySelector('.nav');
+var onS=function(){nav.classList.toggle('scrolled',window.scrollY>40)};onS();window.addEventListener('scroll',onS,{passive:true});
+if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var els=[].slice.call(document.querySelectorAll('.head,.svc,.proj,.about-copy,.person,.contact-grid>*'));
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+els.forEach(function(el){el.classList.add('rv');if(el.getBoundingClientRect().top>window.innerHeight){el.classList.add('pre');io.observe(el)}});
+})();
+</script>
+</body>
+</html>
