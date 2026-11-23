@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eshanya-buildpro.vercel.app/sitemap.xml
+Sitemap: https://eshanyabuildpro.com/sitemap.xml
